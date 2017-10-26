@@ -1,0 +1,22 @@
+{
+  "name": "graphql-nats-subscriptions",
+  "version": "0.1.0",
+  "description": "GraphQL subscriptions over NATS",
+  "author": "Moon & Walker Technoligies",
+  "license": "MIT",
+  "repository": "moonwalker/graphql-nats-subscriptions",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "graphql-subscriptions": "^0.5.4",
+    "nats": "^0.7.24"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.47",
+    "typescript": "^2.5.3"
+  }
+}
