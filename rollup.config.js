@@ -1,6 +1,5 @@
 import rimraf from 'rimraf'
-import typescript from 'typescript'
-import rollupts from 'rollup-plugin-typescript'
+import typescript from 'rollup-plugin-typescript2'
 
 rimraf.sync('dist')
 
@@ -12,8 +11,6 @@ export default {
   },
   external: ['graphql-subscriptions', 'iterall', 'nats'],
   plugins: [
-    rollupts({
-      typescript
-    })
+    typescript()
   ]
 }
