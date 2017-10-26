@@ -9,7 +9,7 @@
   "scripts": {
     "watch": "tsc -w",
     "build": "rollup -c",
-    "prepuprepublishOnlyblish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "graphql-subscriptions": "^0.5.4",
