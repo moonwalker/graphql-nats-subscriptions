@@ -1,5 +1,5 @@
 {
-  "name": "graphql-nats-subscriptions",
+  "name": "@moonwalker/graphql-nats-subscriptions",
   "version": "0.1.0",
   "description": "GraphQL subscriptions over NATS",
   "author": "Moon & Walker Technoligies",
@@ -7,9 +7,9 @@
   "repository": "moonwalker/graphql-nats-subscriptions",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
     "watch": "tsc -w",
-    "prepublish": "npm run build"
+    "build": "rollup -c",
+    "prepuprepublishOnlyblish": "npm run build"
   },
   "dependencies": {
     "graphql-subscriptions": "^0.5.4",
@@ -17,6 +17,9 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.47",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.50.0",
+    "rollup-plugin-typescript": "^0.8.1",
     "typescript": "^2.5.3"
   }
 }
