@@ -5,7 +5,7 @@
   "author": "Moon & Walker Technoligies",
   "license": "MIT",
   "repository": "moonwalker/graphql-nats-subscriptions",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "watch": "tsc -w",
     "build": "rollup -c",
