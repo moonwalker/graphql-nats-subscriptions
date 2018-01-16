@@ -12,14 +12,14 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "graphql-subscriptions": "^0.5.5",
+    "graphql-subscriptions": "^0.5.6",
     "nats": "^0.7.24"
   },
   "devDependencies": {
-    "@types/node": "^8.0.53",
+    "@types/node": "^9.3.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.51.8",
-    "rollup-plugin-typescript2": "^0.8.1",
-    "typescript": "^2.6.1"
+    "rollup": "^0.54.0",
+    "rollup-plugin-typescript2": "^0.10.0",
+    "typescript": "^2.6.2"
   }
 }
