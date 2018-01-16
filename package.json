@@ -1,6 +1,6 @@
 {
   "name": "@moonwalker/graphql-nats-subscriptions",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "GraphQL subscriptions over NATS",
   "author": "Moon & Walker Technoligies",
   "license": "MIT",
