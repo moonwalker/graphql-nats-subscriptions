@@ -9,14 +9,12 @@ export class NatsPubSub implements PubSubEngine {
     this.nats = connect(options)
   }
 
-  public publish(subject: string, payload: any): boolean {
-    this.nats.publish(subject, JSON.stringify(payload))
-    return true
+  public async publish(subject: string, payload: any): Promise<void> {
+    return await this.nats.publish(subject, JSON.stringify(payload))
   }
 
   public async subscribe(subject: string, onMessage: Function): Promise<number> {
     return await this.nats.subscribe(subject, msg => onMessage(JSON.parse(msg)))
-    // return new Promise<number>((resolve, reject) => {})
   }
 
   public unsubscribe(sid: number) {
