@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "lib": ["esnext"],
-    "module": "ESNext",
-    "rootDir": "src",
     "target": "es5",
-    "outDir": "lib"
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "outDir": "lib",
+    "removeComments": true,
+    "lib": ["es6","esnext"]
   },
   "exclude": [
     "node_modules",

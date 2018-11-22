@@ -2,25 +2,21 @@ import { connect, Client } from 'nats'
 import { PubSubEngine } from 'graphql-subscriptions'
 import { PubSubAsyncIterator } from './pubsub-async-iterator'
 
-export interface NatsPubSubOptions {
-  natsUrl?: string
-}
-
-export class PubSub implements PubSubEngine {
+export class NatsPubSub implements PubSubEngine {
   private nats: Client
 
-  constructor(options: NatsPubSubOptions = {}) {
-    this.nats = connect(options.natsUrl || 'nats://127.0.0.1:4222')
+  constructor(options: any) {
+    this.nats = connect(options)
   }
 
-  publish(subject: string, payload: any): boolean {
+  public publish(subject: string, payload: any): boolean {
     this.nats.publish(subject, JSON.stringify(payload))
     return true
   }
 
-  subscribe(subject: string, onMessage: Function): Promise<number> {
-    const sid = this.nats.subscribe(subject, msg => onMessage(JSON.parse(msg)))
-    return Promise.resolve(sid)
+  public async subscribe(subject: string, onMessage: Function): Promise<number> {
+    return await this.nats.subscribe(subject, msg => onMessage(JSON.parse(msg)))
+    // return new Promise<number>((resolve, reject) => {})
   }
 
   public unsubscribe(sid: number) {
