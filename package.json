@@ -13,11 +13,13 @@
     "incver": "npm version patch -m ':package: release %s'",
     "bump": "npm run incver && git push --follow-tags && npm publish"
   },
-  "devDependencies": {
-    "@types/node": "^10.12.10",
+  "dependencies": {
     "graphql-subscriptions": "^1.0.0",
     "iterall": "^1.2.2",
-    "nats": "^1.0.1",
+    "nats": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.10",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.3",
     "rollup-plugin-typescript2": "^0.18.0",
