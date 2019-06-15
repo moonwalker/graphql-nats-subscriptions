@@ -46,12 +46,12 @@ export class PubSubAsyncIterator<T> implements AsyncIterator<T> {
     return this.listening ? this.pullValue() : this.return()
   }
 
-  public async return() {
+  public async return(): Promise<IteratorResult<any>> {
     this.emptyQueue(await this.allSubscribed)
     return { value: undefined, done: true }
   }
 
-  public async throw(error) {
+  public async throw(error: Error) {
     this.emptyQueue(await this.allSubscribed)
     return Promise.reject(error)
   }
@@ -67,10 +67,14 @@ export class PubSubAsyncIterator<T> implements AsyncIterator<T> {
   private listening: boolean
   private pubsub: PubSubEngine
 
-  private async pushValue(message) {
+  private async pushValue(message: string) {
     await this.allSubscribed
     if (this.pullQueue.length !== 0) {
-      this.pullQueue.shift()({ value: message, done: false })
+      const cb = this.pullQueue.shift()
+      if (!cb) {
+        return
+      }
+      cb({ value: message, done: false })
     } else {
       this.pushQueue.push(message)
     }
