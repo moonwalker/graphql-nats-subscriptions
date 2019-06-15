@@ -5,9 +5,9 @@ import * as nats from 'nats'
 export class NatsPubSub implements PubSubEngine {
   private nats: nats.Client
 
-  constructor(options: nats.ClientOpts | nats.Client) {
-    if (options instanceof nats.Client) {
-      this.nats = options
+  constructor(options: nats.ClientOpts & { nc?: nats.Client }) {
+    if (options.nc) {
+      this.nats = options.nc
     } else {
       this.nats = nats.connect(options)
     }

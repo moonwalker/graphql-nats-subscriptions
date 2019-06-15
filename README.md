@@ -14,7 +14,7 @@ const pubsub = new NatsPubSub({ servers: ['nats://nats.io:4222', 'nats://nats.io
 import * as nats from "nats"
 
 const client = nats.connect();
-const pubsub = new NatsPubSub(client)
+const pubsub = new NatsPubSub({ nc: client })
 
 // for more options see: https://github.com/nats-io/node-nats
 ```
