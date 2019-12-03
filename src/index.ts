@@ -1,1 +1,2 @@
-export { NatsPubSub } from './nats-pubsub'
+export * from './pubsub-async-iterator'
+export * from './nats-pubsub'

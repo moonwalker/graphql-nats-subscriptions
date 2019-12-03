@@ -1,12 +1,16 @@
-import { connect, Client } from 'nats'
-import { PubSubEngine } from 'graphql-subscriptions'
 import { PubSubAsyncIterator } from './pubsub-async-iterator'
+import { PubSubEngine } from 'graphql-subscriptions'
+import * as nats from 'nats'
 
 export class NatsPubSub implements PubSubEngine {
-  private nats: Client
+  private nats: nats.Client
 
-  constructor(options: any) {
-    this.nats = connect(options)
+  constructor(options: nats.ClientOpts & { nc?: nats.Client }) {
+    if (options.nc) {
+      this.nats = options.nc
+    } else {
+      this.nats = nats.connect(options)
+    }
   }
 
   public async publish(subject: string, payload: any): Promise<void> {
@@ -14,7 +18,7 @@ export class NatsPubSub implements PubSubEngine {
   }
 
   public async subscribe(subject: string, onMessage: Function): Promise<number> {
-    return await this.nats.subscribe(subject, msg => onMessage(JSON.parse(msg)))
+    return await this.nats.subscribe(subject, (event: string) => onMessage(JSON.parse(event)))
   }
 
   public unsubscribe(sid: number) {
