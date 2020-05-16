@@ -18,7 +18,16 @@ export class NatsPubSub implements PubSubEngine {
   }
 
   public async subscribe(subject: string, onMessage: Function): Promise<number> {
-    return await this.nats.subscribe(subject, (event: string) => onMessage(JSON.parse(event)))
+    return await this.nats.subscribe(subject, (event: string) => {
+      var payload;
+      try {
+        payload = JSON.parse(event);
+      }
+      catch (e) {
+        payload = event;
+      }
+      onMessage(payload);
+    });
   }
 
   public unsubscribe(sid: number) {
