@@ -3,7 +3,7 @@ import { PubSubEngine } from 'graphql-subscriptions'
 import * as nats from 'nats'
 
 export class NatsPubSub implements PubSubEngine {
-  private nats: nats.Client
+  public nats: nats.Client
 
   constructor(options: nats.ClientOpts & { nc?: nats.Client }) {
     if (options.nc) {
